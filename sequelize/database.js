@@ -2,11 +2,9 @@ const Sequelize = require('sequelize');
 const dotenv = require('dotenv');
 
 let env = dotenv.config();
-
-module.exports =  new Sequelize(env.DB_NAME, env.DB_USERNAME, env.DB_PASSWORD, {
-    host: env.DB_HOST,
-    dialect: env.DB_DIALECT,
-    operatorsAliases: false,
+module.exports =  new Sequelize(env.parsed.DB_NAME, env.parsed.DB_USERNAME, env.parsed.DB_PASSWORD, {
+    host: env.parsed.DB_HOST,
+    dialect: env.parsed.DB_DIALECT,
 
     pool: {
         max: 5,
