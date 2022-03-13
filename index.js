@@ -1,9 +1,18 @@
 const express = require("express");
+const User = require("./sequelize/models/User");
+const Sequelize = require("sequelize");
+
+
+
+
 const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+
 require("dotenv").config();
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    User.findAll().then(users => res.json(users)).catch(error => res.json(error))
 })
 
 
