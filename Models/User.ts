@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize');
-const db = require('../database');
+import * as Sequelize from "Sequelize";
+const db = require('../Configuration/database.js');
 
 const User = db.define('User', {
-    ID: {
+    Id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
         allowNull: false,
@@ -33,7 +33,7 @@ const User = db.define('User', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "UserName is required."}
+            notNull: { msg: "Password is required."}
         }
     }
 })
