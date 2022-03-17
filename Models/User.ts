@@ -1,35 +1,35 @@
 import * as Sequelize from "Sequelize";
-const db = require('../Configuration/database.js');
+import db from "../Configuration/database"
 
 const User = db.define('User', {
-    Id: {
+    ID: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true
     },
-    FirstName: {
+    firstName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: "FirstName is required." },
         },
     },
-    LastName: {
+    lastName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: "LastName is required." },
         },
     },
-    UserName: {
+    username: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: "UserName is required."}
         }
     },
-    Password: {
+    password: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -43,4 +43,4 @@ User.sync().then(() => {
     console.log('Users Created.');
 });
 
-module.exports = User;
+export default User;

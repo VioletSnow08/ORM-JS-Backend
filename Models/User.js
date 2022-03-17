@@ -22,38 +22,41 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Sequelize = __importStar(require("Sequelize"));
-const db = require('../Configuration/database.js');
-const User = db.define('User', {
-    Id: {
+const database_1 = __importDefault(require("../Configuration/database"));
+const User = database_1.default.define('User', {
+    ID: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true
     },
-    FirstName: {
+    firstName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: "FirstName is required." },
         },
     },
-    LastName: {
+    lastName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: "LastName is required." },
         },
     },
-    UserName: {
+    username: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
             notNull: { msg: "UserName is required." }
         }
     },
-    Password: {
+    password: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -64,4 +67,4 @@ const User = db.define('User', {
 User.sync().then(() => {
     console.log('Users Created.');
 });
-module.exports = User;
+exports.default = User;
