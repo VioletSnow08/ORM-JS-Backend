@@ -12,28 +12,28 @@ const User = db.define('User', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "FirstName is required." },
+            notNull: { msg: "firstName is required." },
         },
     },
     lastName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "LastName is required." },
+            notNull: { msg: "lastName is required." },
         },
     },
     username: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "UserName is required."}
+            notNull: { msg: "userName is required."}
         }
     },
     password: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "Password is required."}
+            notNull: { msg: "password is required."}
         }
     }
 })

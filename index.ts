@@ -1,5 +1,5 @@
 import express from "express";
-const User = require("./Models/User");
+const User = require("./Models/user");
 import * as Sequelize from "Sequelize";
 import fetch from "node-fetch";
 import jwt from "jsonwebtoken";
@@ -15,7 +15,7 @@ require("dotenv").config();
 
 
 // Importing Controllers
-const UsersController = require("./Controllers/User");
+const UsersController = require("./Controllers/user");
 
 app.post(UsersController.Create.BaseUrl, UsersController.Create.Function);
 

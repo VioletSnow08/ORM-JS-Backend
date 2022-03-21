@@ -12,17 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const BaseControllerAction_1 = __importDefault(require("../Models/BaseModels/BaseControllerAction"));
-const User_1 = __importDefault(require("../Models/User"));
-const md5_1 = __importDefault(require("md5"));
-let Create = new BaseControllerAction_1.default("Create", "/Users/Create", "UsersController");
+const baseControllerAction_1 = __importDefault(require("../Models/BaseModels/baseControllerAction"));
+const user_1 = __importDefault(require("../Models/user"));
+const Services_1 = __importDefault(require("../Services"));
+let Create = new baseControllerAction_1.default("Create", "/Users/Create", "UsersController");
 Create.Function = ((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body);
-    User_1.default.create({
+    if (!Services_1.default.passwordService.isValid(req.body.password))
+        return res.json({ "Error": "Invalid Password" });
+    user_1.default.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         userName: req.body.username,
-        password: (0, md5_1.default)(req.body.password)
+        password: Services_1.default.passwordService.hashPassword(req.body.password)
     }).then((newUser) => {
         return res.json(newUser);
     }).catch((error) => {
