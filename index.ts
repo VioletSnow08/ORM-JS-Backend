@@ -17,7 +17,7 @@ require("dotenv").config();
 // Importing Controllers
 const UsersController = require("./Controllers/user");
 
-app.post(UsersController.Create.BaseUrl, UsersController.Create.Function);
+app.post(UsersController.create.BaseUrl, UsersController.create.Function);
 
 
 app.listen(process.env.EXPRESS_PORT);
