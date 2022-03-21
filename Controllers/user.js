@@ -15,14 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const baseControllerAction_1 = __importDefault(require("../Models/BaseModels/baseControllerAction"));
 const user_1 = __importDefault(require("../Models/user"));
 const Services_1 = __importDefault(require("../Services"));
-let Create = new baseControllerAction_1.default("Create", "/Users/Create", "UsersController");
-Create.Function = ((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+let create = new baseControllerAction_1.default("create", "/users/create", "usersController");
+create.Function = ((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     if (!Services_1.default.passwordService.isValid(req.body.password))
         return res.json({ "Error": "Invalid Password" });
     user_1.default.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userName: req.body.username,
+        username: req.body.username,
         password: Services_1.default.passwordService.hashPassword(req.body.password)
     }).then((newUser) => {
         return res.json(newUser);
@@ -31,5 +31,5 @@ Create.Function = ((req, res, next) => __awaiter(void 0, void 0, void 0, functio
     });
 }));
 module.exports = {
-    Create
+    create
 };

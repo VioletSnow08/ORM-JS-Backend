@@ -1,7 +1,7 @@
 import * as Sequelize from "Sequelize";
 import db from "../Configuration/database"
 
-const User = db.define('User', {
+const user = db.define('user', {
     ID: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
@@ -26,7 +26,7 @@ const User = db.define('User', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "userName is required."}
+            notNull: { msg: "username is required."}
         }
     },
     password: {
@@ -39,8 +39,8 @@ const User = db.define('User', {
 })
 
 
-User.sync().then(() => {
+user.sync().then(() => {
     console.log('Users Created.');
 });
 
-export default User;
+export default user;

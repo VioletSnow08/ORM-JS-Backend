@@ -11,7 +11,7 @@ create.Function = (async (req: any, res: any, next: any) => {
     user.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        userName: req.body.username,
+        username: req.body.username,
         password: Services.passwordService.hashPassword(req.body.password)
     }).then((newUser : object) => {
         return res.json(newUser);

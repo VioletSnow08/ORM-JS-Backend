@@ -14,5 +14,5 @@ app.use((0, multer_1.default)().any()); // Allows for Form-Data to be used
 require("dotenv").config();
 // Importing Controllers
 const UsersController = require("./Controllers/user");
-app.post(UsersController.Create.BaseUrl, UsersController.Create.Function);
+app.post(UsersController.create.BaseUrl, UsersController.create.Function);
 app.listen(process.env.EXPRESS_PORT);

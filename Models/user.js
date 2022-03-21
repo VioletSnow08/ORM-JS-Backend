@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -28,7 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Sequelize = __importStar(require("Sequelize"));
 const database_1 = __importDefault(require("../Configuration/database"));
-const User = database_1.default.define('User', {
+const user = database_1.default.define('user', {
     ID: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
@@ -39,32 +35,32 @@ const User = database_1.default.define('User', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "FirstName is required." },
+            notNull: { msg: "firstName is required." },
         },
     },
     lastName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "LastName is required." },
+            notNull: { msg: "lastName is required." },
         },
     },
     username: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "UserName is required." }
+            notNull: { msg: "username is required." }
         }
     },
     password: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            notNull: { msg: "Password is required." }
+            notNull: { msg: "password is required." }
         }
     }
 });
-User.sync().then(() => {
+user.sync().then(() => {
     console.log('Users Created.');
 });
-exports.default = User;
+exports.default = user;
